@@ -1,0 +1,12 @@
+# Choose your databases adapter
+#psycopg2
+MySQL-python
+
+Pillow
+
+# Utils
+ipython
+
+# Deployment
+django-supervisor
+uWSGI

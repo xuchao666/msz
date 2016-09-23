@@ -1,0 +1,41 @@
+# Install everything that needs to be compiled
+-r compiled.txt
+
+# Django stuff
+Django>=1.8,<1.9
+
+# Templates
+Markdown
+
+# Logging
+raven
+
+# Celery: Message queue
+celery
+django-celery
+
+
+# Caching
+python-memcached
+
+
+# Database backup
+django-dbbackup
+
+# Extensions
+django-extensions
+
+# Forms
+django-crispy-forms
+django-parsley
+django-simple-captcha
+
+# Env
+django-environ==0.4.0
+
+# Sass/Compass
+django-compressor
+
+
+# dj-kits
+dj-kits==1.0.3
