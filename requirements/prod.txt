@@ -13,6 +13,7 @@ raven
 # Celery: Message queue
 celery
 django-celery
+django-model-utils==2.2
 
 
 # Caching

@@ -1,35 +1,171 @@
+{% load staticfiles %}
+{% load dj_kit_tags %}
+{% load staticfiles %}
 {% load i18n %}
+{% load compress %}
+
+
 <!DOCTYPE HTML>
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="xuchao">
+    <meta name="description" content="xuchao">
+    <meta name="author" content="">
 	<title>{% block title %}{{ SITE_TITLE }}{% endblock %}</title>
+	<!-- core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="{% static 'js/html5shiv.js' %}"></script>
+    <script src="{% static 'js/respond.min.js' %}"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript">
+        $('.carousel').carousel()
+    </script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+    <script src="{% static 'js/jquery.isotope.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
 	{% block css %}{% endblock %}
 	{% block js %}{% endblock %}
 </head>
 <body>
 	{% get_current_language as LANGUAGE_CODE %}
-	<div id="page" class="{% block page_class %}page {{ LANGUAGE_CODE }}{% endblock %}">
-	{% block page %}
-		<div id="header">
-			{% block header %}{% include "includes/header.html" %}{% endblock %}
-		</div>
-		<div id="content">
-			{% block content %}
-			<div id="main">
-				{% block main %}{% endblock %}
-			</div>
-			<div id="sidebar">
-				{% block sidebar %}{% endblock %}
-			</div>
-			{% endblock %}
-		</div>
-		<div id="footer">
-			{% block footer %}{% include "includes/footer.html" %}{% endblock %}
-		</div>
-	{% endblock %}
-	</div>
-	{% include "includes/footer_scripts.html" %}
+    <header id="header">
+            <nav class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li  class='active'><a href="index.html">首頁</a></li>
+                    <li ><a href="flower.html">花釀系列</a></li>
+                    <li ><a href="dok.html">豆干系列</a></li>
+                    <li ><a href="sugar.html">黑糖系列</a></li>
+                    <li ><a href="buy.html">宅配到府</a></li>
+                    <li ><a href="map.html">聯絡有美</a></li>
+                    <li>　　　<a href="#">電話：0919-825503</a></li>
+                </ul>
+            </div>
+        </div><!--/.container-->
+    </nav><!--/nav-->
+<!--/nav-->
+    </header><!--/header-->
+    <section id="about-us">
+        <div class="container">
+        {% block content %}
+        {% endblock %}
+      <!-- our-team --><!--section-->
+        </div><!--/.container-->
+    </section><!--/about-us-->
+
+    <section id="bottom">
+        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>桂花釀系列產品</h3>
+                        <ul>
+                          <li>桂花釀</li>
+                          <li>玫瑰釀</li>
+                          <li>薰衣草釀</li>
+                          <li>蔓越莓醋</li>
+                          <li>蔓越莓釀</li>
+                          <li>水蜜桃釀</li>
+                          <li>佛手柚子</li>
+                          <li>燒桔茶</li>
+                          <li>桂花醋</li>
+                          <li>玫瑰醋</li>
+                          <li>蘋果醋</li>
+                          <li>梅子醋</li>
+                          <li>蜂蜜醋</li>
+                          <li>水蜜桃醋</li>
+
+                        </ul>
+                    </div>
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>蜜餞手工梅系列</h3>
+                        <ul>
+                          <li>桂花梅</li>
+                          <li>玫瑰梅</li>
+                          <li>茶梅</li>
+                          <li>凍頂茶梅</li>
+                          <li>野生金桔</li>
+                          <li>冰梅</li>
+                          <li>乾甜梅</li>
+                        </ul>
+                    </div>
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>黑糖塊系列</h3>
+                        <ul>
+                          <li>桂花黑糖</li>
+                          <li>黑糖薑母</li>
+                          <li>黑糖四物</li>
+                          <li>黑糖桂圓紅棗</li>
+                          <li>黑糖四合一</li>
+                          <li>黑糖糕</li>
+                        </ul>
+                    </div>
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>豆干系列</h3>
+                        <ul>
+                          <li>素牛肉</li>
+                          <li>長條豆干</li>
+                          <li>炭烤豆干</li>
+                          <li>沙茶豆干(原味．辣味)</li>
+                          <li>素蹄筋(原味．辣味)</li>
+                        </ul>
+                    </div>
+                </div><!--/.col-md-3-->
+            </div>
+        </div>
+    </section><!--/#bottom-->
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2015 <a target="_blank" href="http://www.uma.tw/" title="桂花釀">南庄有美桂花釀(353苗栗縣南庄鄉文化路南庄老街桂花巷內) 電話：0919-825503</a>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="flower.html">花釀系列</a></li>
+                        <li><a href="dok.html">豆干系列</a></li>
+                        <li><a href="sugar.html">黑糖系列</a></li>
+                        <li><a href="farm.html">農特產品</a></li>
+                        <li><a href="buy.html">宅配到府</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
 </body>
 </html>

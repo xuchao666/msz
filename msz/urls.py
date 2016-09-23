@@ -2,10 +2,12 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
+from msz.market.views import index
 
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     # Examples:
     # url(r'^$', 'demo_tmp.views.home', name='home'),
     # url(r'^msz/', include('msz.foo.urls')),
@@ -17,11 +19,14 @@ urlpatterns = patterns('',
 
     url(r'^captcha/', include('captcha.urls')),
     url(r'^i18n/setlang/$', 'django.views.i18n.set_language', name='set_language'),
+    url(r'^$', index, name='index'),
+    url(r'', include('msz.market.urls', namespace='market')),
 )
 
 
 if settings.DEBUG:
-    urlpatterns = patterns('',
+    urlpatterns = patterns(
+        '',
         url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
                 'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
         url(r'', include('django.contrib.staticfiles.urls')),

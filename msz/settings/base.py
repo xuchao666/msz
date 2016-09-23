@@ -32,7 +32,7 @@ LANGUAGE_CODE = 'zh-hans'
 
 SITE_ID = 1
 
-SITE_TITLE = gettext_noop(u'change_me')
+SITE_TITLE = gettext_noop(u'梦顺斋')
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -133,6 +133,7 @@ INSTALLED_APPS = (
 
     'crispy_forms',
     'dj_kits',
+    'msz.market'
 )
 
 
