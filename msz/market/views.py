@@ -1,10 +1,28 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.forms.util import ErrorList
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.shortcuts import render
+from msz.market.models import Category, Company
+
+
+def __initial_base_data():
+    categories = Category.objects.filter()
+    try:
+        company = Company.objects.first()
+    except:
+        company = None
+    print company
+    context = dict(
+        categories=categories,
+        company=company
+    )
+    return context
 
 
 def index(request):
-    return render(request, 'market/index.html', {})
+    context = __initial_base_data()
+    return render(request, 'market/index.html', context)
+
+
+def category_info(request, pk):
+    category = Category.objects.get(pk=pk)
+    context = dict(category=category)
+    return render(request, 'market/category.html', context=context)
