@@ -48,3 +48,9 @@ class LogoutView(TemplateView):
         return redirect(next_url)
 
 logout = LogoutView.as_view()
+
+
+class IndexView(TemplateView):
+    template_name = 'union/union.html'
+
+index = IndexView.as_view()
