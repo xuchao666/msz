@@ -1,11 +1,19 @@
+{% load i18n %}
+{% load staticfiles %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% trans '梦顺斋管理平台' %}</title>
+    <meta name="keywords" content="{% trans '梦顺斋管理平台' %}" />
+    <meta name="description" content="{% trans '梦顺斋管理平台' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="{% static 'js/csrf.js' %}"></script>
 </head>
 <body>
-    <form id="form_login" action="{% url 'accounts:login' %}" method="post">
+    <form id="form_login" action="{% url 'union:login' %}" method="post">
         {% csrf_token %}
         <fieldset>
             <label class="block clearfix">
