@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form id="form_login" action="{% url 'accounts:login' %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <label class="block clearfix">
+                <span class="block input-icon input-icon-right">
+                    <input type="text" id="id_username" name="username" class="form-control" placeholder="Username" />
+                    <i class="icon-user"></i>
+                </span>
+                <span id="error_username"></span>
+            </label>
+
+            <label class="block clearfix">
+                <span class="block input-icon input-icon-right">
+                    <input type="password" id="id_password" name="password" class="form-control" placeholder="Password" />
+                    <i class="icon-lock"></i>
+                </span>
+                <span id="error_password"></span>
+            </label>
+
+            <div class="space"></div>
+
+            <div class="clearfix">
+                <button type="submit" id="submit-login" class="width-35 pull-right btn btn-sm btn-primary">
+                    <i class="icon-key"></i>
+                    {% trans '登录' %}
+                </button>
+            </div>
+
+            <div class="space-4"></div>
+        </fieldset>
+    </form>
+</body>
+</html>

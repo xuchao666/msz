@@ -21,6 +21,8 @@ urlpatterns = patterns(
     url(r'^i18n/setlang/$', 'django.views.i18n.set_language', name='set_language'),
     url(r'^$', index, name='index'),
     url(r'', include('msz.market.urls', namespace='market')),
+    # union
+    url(r'^union/', include('msz.union.urls', namespace='union')),
 )
 
 

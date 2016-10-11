@@ -133,7 +133,8 @@ INSTALLED_APPS = (
 
     'crispy_forms',
     'dj_kits',
-    'msz.market'
+    'msz.market',
+    'msz.union'
 )
 
 
