@@ -5,7 +5,7 @@
 body{
     font-family: "微软雅黑";
     font-size: 14px;
-    background: url('img/56a46b7590f5672af5b8.jpg') fixed center center;
+    background: url('../img/56a46b7590f5672af5b8.jpg') fixed center center;
 }
 .logo_box{
     width: 280px;
@@ -47,7 +47,7 @@ body{
 .u_user{
     width: 25px;
     height: 25px;
-    background: url('img/login_ico.png');
+    background: url('../img/login_ico.png');
     background-position:  -125px 0;
     position: absolute;
     margin: 12px 13px;
@@ -55,7 +55,7 @@ body{
 .us_uer{
     width: 25px;
     height: 25px;
-    background-image: url('img/login_ico.png');
+    background-image: url('../img/login_ico.png');
     background-position: -125px -34px;
     position: absolute;
     margin: 12px 13px;
