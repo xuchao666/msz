@@ -55,3 +55,5 @@ if USE_SUPERVISOR:
 
     UWSGI_SOCKET = env.list('UWSGI_SOCKET', default=['127.0.0.1:8080'])
     UWSGI_LIMIT_AS = env.int('UWSGI_LIMIT_AS', default=0)
+
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default='')
