@@ -49,14 +49,14 @@ class LogoutView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         auth.logout(request)
-        next_url = request.REQUEST.get('next', '') or '/'
+        next_url = request.REQUEST.get('next', '') or '/union/login/'
         from django.shortcuts import redirect
         return redirect(next_url)
 
 logout = LogoutView.as_view()
 
 
-class IndexView(TemplateView):
+class IndexView(UnionCommonView, TemplateView):
     template_name = 'union/union.html'
 
 index = IndexView.as_view()
