@@ -22,6 +22,11 @@ class Company(TimeStampedModel):
     def __str__(self):
         return self.name
 
+    def get_image_url(self):
+        if self.image:
+            return self.image.url
+        return ''
+
 
 @python_2_unicode_compatible
 class Category(TimeStampedModel):
@@ -38,6 +43,11 @@ class Category(TimeStampedModel):
 
     def __str__(self):
         return self.name
+
+    def get_image_url(self):
+        if self.image:
+            return self.image.url
+        return ''
 
 
 @python_2_unicode_compatible
@@ -57,3 +67,8 @@ class Product(TimeStampedModel):
 
     def __str__(self):
         return self.name
+
+    def get_image_url(self):
+        if self.image:
+            return self.image.url
+        return ''

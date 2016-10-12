@@ -32,7 +32,7 @@ $(function () {
         _this.addClass("posting");
         params.push({name: 'next', value: _nextUrl});
         $.ajax({
-            url: "/accounts/login/",
+            url: "/union/login/",
             data: params,
             dataType: "json",
             type: "POST",

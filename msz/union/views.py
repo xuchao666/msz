@@ -3,7 +3,13 @@ from django.contrib import auth
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from dj_kits.utils.forms import errors_to_json
-from braces.views import LoginRequiredMixin, JSONResponseMixin
+from braces.views import JSONResponseMixin
+
+from msz.core.generic import UnionCommonView, UpdateView, ListView
+from msz.market.filters import CategoryFilter, ProductFilter
+from msz.market.forms import CompanyForm
+from msz.market.models import Company, Category, Product
+from msz.market.tables import CategoryTable, ProductTable
 from msz.union.forms import LoginForm
 
 
@@ -54,3 +60,41 @@ class IndexView(TemplateView):
     template_name = 'union/union.html'
 
 index = IndexView.as_view()
+
+
+class CompanyDetailView(UnionCommonView, TemplateView):
+    template_name = 'union/company_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CompanyDetailView, self).get_context_data(**kwargs)
+        context['company'] = Company.objects.first()
+        return context
+
+company_detail = CompanyDetailView.as_view()
+
+
+class CompanyUpdateView(UnionCommonView, UpdateView, JSONResponseMixin):
+    template_name = 'union/company_update.html'
+    model = Company
+    form_class = CompanyForm
+    success_url = '/union/company/'
+
+company_update = CompanyUpdateView.as_view()
+
+
+class CategoryListView(UnionCommonView, ListView):
+    template_name = 'union/category_list.html'
+    model = Category
+    filter_class = CategoryFilter
+    table_class = CategoryTable
+
+category_list = CategoryListView.as_view()
+
+
+class ProductListView(UnionCommonView, ListView):
+    template_name = 'union/product_list.html'
+    model = Product
+    filter_class = ProductFilter
+    table_class = ProductTable
+
+product_list = ProductListView.as_view()

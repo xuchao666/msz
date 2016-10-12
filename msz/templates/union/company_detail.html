@@ -1,0 +1,67 @@
+{% extends "union/union_base.html" %}
+
+
+{% load i18n %}
+{% load compress %}
+{% load staticfiles %}
+
+
+{%  block js %}
+{#    <script src="{% static 'aces/js/ace.min.js' %}"></script>#}
+{% endblock %}
+
+
+{% block css %}
+    {% compress css %}
+{#        <link rel="stylesheet" href="{% static 'aces/css/bootstrap.min.css' %}" />#}
+    {% endcompress %}
+
+{% endblock %}
+
+{% block nav %}
+    <ul>
+        <li><img src="/static/img/home.png"></li>
+        <li style="margin-left:25px;">您当前的位置：</li>
+        <li><a href="#">系统公告</a></li>
+        <li>></li>
+        <li><a href="#">最新公告</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="detail-view">
+        <ul style="padding: 0 50px">
+            <li>
+                <label>{% trans '公司名称：' %}</label>
+                {{ company.name }}
+            </li>
+            <li>
+                <label>{% trans '手机号：' %}</label>
+                {{ company.mobile }}
+            </li>
+            <li>
+                <label>{% trans '联系方式：' %}</label>
+                {{ company.tel }}
+            </li>
+            <li>
+                <label>{% trans '公司图片：' %}</label>
+                <img src="{{ company.get_image_url }}" style="width:200px">
+            </li>
+            <li>
+                <label>{% trans '公司地址：' %}</label>
+                {{ company.address }}
+            </li>
+            <li>
+                <label>{% trans '公司负责人：' %}</label>
+                {{ company.manager }}
+            </li>
+            <li>
+                <label>{% trans '公司简介：' %}</label>
+                {{ company.description }}
+            </li>
+        </ul>
+    </div>
+    <div style="margin-left: 100px;margin-top: 20px">
+        <a href="{% url 'union:company_update' company.id %}"><botton class="btn">{% trans '编辑' %}</botton></a>
+    </div>
+{% endblock %}

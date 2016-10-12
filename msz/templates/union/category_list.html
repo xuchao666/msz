@@ -1,0 +1,66 @@
+{% extends "union/union_base.html" %}
+
+
+{% load i18n %}
+{% load compress %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+{%  block js %}
+{#    <script src="{% static 'aces/js/ace.min.js' %}"></script>#}
+{% endblock %}
+
+
+{% block css %}
+    {% compress css %}
+{#        <link rel="stylesheet" href="{% static 'aces/css/bootstrap.min.css' %}" />#}
+    {% endcompress %}
+
+{% endblock %}
+
+{% block nav %}
+    <ul>
+        <li><img src="/static/img/home.png"></li>
+        <li style="margin-left:25px;">您当前的位置：</li>
+        <li><a href="#">系统公告</a></li>
+        <li>></li>
+        <li><a href="#">最新公告</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="detail-view">
+        <div class="table-responsive">
+            <form method="get">
+                <div class="" id="sample-table-2_filter">
+                    <label>{% trans '分类名称' %}:{{ filter_form.name }}</label>
+                    <label>{% trans '分类编号' %}:{{ filter_form.code }}</label>
+                        <input id="submit-id-submit" class="btn btn-sm btn-primary" type="submit" value="{% trans '查询' %}" name="submit">
+                </div>
+            </form>
+        </div>
+        <table class="table table-striped table-bordered table-hover dataTable">
+            <thead>
+                <tr role="row">
+                    <th style="width: 200px;">{% trans '图片' %}</th>
+                    <th>{% trans '名称' %}</th>
+                    <th>{% trans '编号' %}</th>
+                    <th>{% trans '简短优势' %}</th>
+                    <th>{% trans '操作' %}</th>
+                </tr>
+            </thead>
+            <tbody role="alert" aria-live="polite" aria-relevant="all">
+            {% for category in object_list %}
+                <tr class="odd">
+                    <td><img src="{{ category.get_image_url }}" style="width:80px; height: 80px;"></td>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.code }}</td>
+                    <td>{{ category.info }}</td>
+                    <td>编辑</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -98,12 +98,13 @@ label{
     display: block;
 }
 .act-but{
-    height: 20px;
+    height: 52px;
     line-height: 20px;
     text-align: center;
     font-size: 20px;
     border-radius: 50px;
     background: #0096e6;
+    width: 275px;
 }
 /*////*/
 .check{
