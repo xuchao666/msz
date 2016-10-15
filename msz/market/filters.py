@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 import django_filters
-from msz.market.models import Category, Product
+from msz.market.models import Category, Product, HomePic
 
 
 class CategoryFilter(django_filters.FilterSet):
@@ -19,3 +19,10 @@ class ProductFilter(django_filters.FilterSet):
     class Meta:
         model = Product
         fields = ('name', 'code')
+
+
+class HomePicFilter(django_filters.FilterSet):
+
+    class Meta:
+        model = HomePic
+        fields = ('name', )

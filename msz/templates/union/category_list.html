@@ -26,6 +26,7 @@
         <li><a href="#">系统公告</a></li>
         <li>></li>
         <li><a href="#">最新公告</a></li>
+        <li><a href="{% url 'union:category_create' %}">{% trans '创建' %}</a></li>
     </ul>
 {% endblock %}
 
@@ -57,7 +58,7 @@
                     <td>{{ category.name }}</td>
                     <td>{{ category.code }}</td>
                     <td>{{ category.info }}</td>
-                    <td>编辑</td>
+                    <td><a href="{% url 'union:category_update' category.id %}">编辑</a></td>
                 </tr>
             {% endfor %}
             </tbody>

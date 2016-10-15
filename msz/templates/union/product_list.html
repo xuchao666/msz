@@ -31,6 +31,7 @@
         <li><a href="#">系统公告</a></li>
         <li>></li>
         <li><a href="#">最新公告</a></li>
+        <li><a href="{% url 'union:product_create' %}">{% trans '创建' %}</a></li>
     </ul>
 {% endblock %}
 
@@ -62,7 +63,7 @@
                     <td>{{ product.name }}</td>
                     <td>{{ product.category.name }}</td>
                     <td>{{ product.info }}</td>
-                    <td>编辑</td>
+                    <td><a href="{% url 'union:product_update' product.id %}">编辑</a></td>
                 </tr>
             {% endfor %}
             </tbody>

@@ -18,15 +18,11 @@
         </ol>
 
         <div class="carousel-inner">
-            <div class="item active">
-                <img src="images/slider_one.jpg" class="img-responsive" alt="">
-           </div>
-           <div class="item">
-                <img src="images/slider_2.jpg" class="img-responsive" alt="">
-           </div>
-           <div class="item">
-                <img src="images/slider_3.jpg" class="img-responsive" alt="">
-           </div>
+            {% for pic in pics %}
+                <div class="item  {% if forloop.first %}active{% endif %}">
+                    <img src="{{ pic.get_image_url }}" class="img-responsive" alt="">
+                </div>
+            {% endfor %}
         </div>
 
         <a class="left carousel-control hidden-xs" href="#carousel-slider" data-slide="prev">

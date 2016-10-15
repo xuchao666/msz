@@ -10,33 +10,17 @@
 
 <!-- Projects Row -->
 <div class="row">
-    <div class="col-md-4 img-portfolio">
-        <a href="buy.html">
-            <img class="img-responsive img-hover" src="images/sugar-1.jpg" alt="">
-        </a>
-        <h3>
-            <a href="buy.html">黑糖桂圓紅棗</a>
-        </h3>
-        <p>一斤 / 包</p>
-  </div>
-    <div class="col-md-4 img-portfolio">
-        <a href="buy.html">
-            <img class="img-responsive img-hover" src="images/sugar-2.jpg" alt="">
-        </a>
-        <h3>
-            <a href="buy.html">黑糖薑塊</a>
-        </h3>
-        <p>一斤 / 包</p>
-  </div>
-    <div class="col-md-4 img-portfolio">
-        <a href="buy.html">
-            <img class="img-responsive img-hover" src="images/sugar-3.jpg" alt="">
-        </a>
-        <h3>
-            <a href="buy.html">黑糖玫瑰四物</a>
-        </h3>
-        <p>一斤 / 包</p>
-  </div>
+    {% for product in products %}
+        <div class="col-md-4 img-portfolio">
+            <a href="{% url 'market:buy' %}">
+                <img class="img-responsive img-hover" src="{{ product.get_image_url }}" alt="{{ product.name }}">
+            </a>
+            <h3>
+                <a href="{% url 'market:buy' %}">{{ product.name }}</a>
+            </h3>
+            <p>一斤 / 包</p>
+      </div>
+    {% endfor %}
 </div>
 <!-- /.row -->
 <!-- Projects Row --><!-- /.row --><!--/#about-slider-->

@@ -22,15 +22,18 @@
 	<link href="{% static 'css/main.css' %}" rel="stylesheet">
     <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
 
+    <script src="{% static 'js/vendor/jquery-1.8.2.js' %}"></script>
     <!--[if lt IE 9]>
     <script src="{% static 'js/html5shiv.js' %}"></script>
     <script src="{% static 'js/respond.min.js' %}"></script>
     <![endif]-->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="shortcut icon" href="{% static 'img/ico/favicon.ico' %}">
 
     <script src="{% static 'js/jquery.js' %}"></script>
     <script type="text/javascript">
-        $('.carousel').carousel()
+        $(function () {
+            $('.carousel').carousel();
+        })
     </script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
@@ -52,7 +55,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                <a class="navbar-brand" href="/"><img src="{% static 'img/logo.png' %}" alt="logo" style="width:250px;"></a>
             </div>
 
             <div class="collapse navbar-collapse navbar-right">
@@ -61,6 +64,8 @@
                     {% for category in categories %}
                     <li ><a href="{% url 'market:category_info' category.id %}">{{ category.name }}</a></li>
                     {% endfor %}
+                    <li ><a href="{% url 'market:buy' %}">{% trans '热销商品' %}</a></li>
+                    <li ><a href="">{% trans '关于我们' %}</a></li>
                     <li><a href="#">電話：{{ company.tel }}</a></li>
                 </ul>
             </div>
@@ -79,70 +84,19 @@
     <section id="bottom">
         <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
             <div class="row">
+                {% for category in categories %}
                 <div class="col-md-3 col-sm-6">
                     <div class="widget">
-                        <h3>桂花釀系列產品</h3>
+                        <h3>{{ category.name }}</h3>
                         <ul>
-                          <li>桂花釀</li>
-                          <li>玫瑰釀</li>
-                          <li>薰衣草釀</li>
-                          <li>蔓越莓醋</li>
-                          <li>蔓越莓釀</li>
-                          <li>水蜜桃釀</li>
-                          <li>佛手柚子</li>
-                          <li>燒桔茶</li>
-                          <li>桂花醋</li>
-                          <li>玫瑰醋</li>
-                          <li>蘋果醋</li>
-                          <li>梅子醋</li>
-                          <li>蜂蜜醋</li>
-                          <li>水蜜桃醋</li>
+                            {% for product in category.products %}
+                            <li>{{ product.name }}</li>
+                            {% endfor %}
 
                         </ul>
                     </div>
                 </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>蜜餞手工梅系列</h3>
-                        <ul>
-                          <li>桂花梅</li>
-                          <li>玫瑰梅</li>
-                          <li>茶梅</li>
-                          <li>凍頂茶梅</li>
-                          <li>野生金桔</li>
-                          <li>冰梅</li>
-                          <li>乾甜梅</li>
-                        </ul>
-                    </div>
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>黑糖塊系列</h3>
-                        <ul>
-                          <li>桂花黑糖</li>
-                          <li>黑糖薑母</li>
-                          <li>黑糖四物</li>
-                          <li>黑糖桂圓紅棗</li>
-                          <li>黑糖四合一</li>
-                          <li>黑糖糕</li>
-                        </ul>
-                    </div>
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>豆干系列</h3>
-                        <ul>
-                          <li>素牛肉</li>
-                          <li>長條豆干</li>
-                          <li>炭烤豆干</li>
-                          <li>沙茶豆干(原味．辣味)</li>
-                          <li>素蹄筋(原味．辣味)</li>
-                        </ul>
-                    </div>
-                </div><!--/.col-md-3-->
+                {% endfor %}
             </div>
         </div>
     </section><!--/#bottom-->

@@ -1,0 +1,95 @@
+{% extends "union/union_base.html" %}
+
+
+{% load i18n %}
+{% load compress %}
+{% load staticfiles %}
+
+
+{%  block js %}
+{#    <script src="{% static 'aces/js/ace.min.js' %}"></script>#}
+{% endblock %}
+
+
+{% block css %}
+    {% compress css %}
+{#        <link rel="stylesheet" href="{% static 'aces/css/bootstrap.min.css' %}" />#}
+    {% endcompress %}
+
+{% endblock %}
+
+{% block nav %}
+    <ul>
+        <li><img src="/static/img/home.png"></li>
+        <li style="margin-left:25px;">您当前的位置：</li>
+        <li><a href="#">系统公告</a></li>
+        <li>></li>
+        <li><a href="#">最新公告</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="form-content">
+        <form role="form" class="form-horizontal" method="post"  action="." enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="form-field-1" class="col-sm-3 control-label no-padding-right"> {% trans '分类名称' %}<i><span style="color:red">*</span></i> </label>
+                <div class="col-sm-9">
+                    {{ form.name }}
+                    <span id="error_name" style="color:red"></span>
+                </div>
+            </div>
+            <div class="space-4"></div>
+            <div class="form-group">
+                <label for="form-field-2" class="col-sm-3 control-label no-padding-right"> {% trans '简短优势' %}<i><span style="color:red">*</span></i> </label>
+                <div class="col-sm-9">
+                    {{ form.info }}
+                    <span id="error_info" style="color:red"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="form-input-readonly" class="col-sm-3 control-label no-padding-right"> {% trans '分类编号' %} </label>
+                <div class="col-sm-9">
+                    {{ form.code }}
+                    <span id="error_code" style="color:red"></span>
+                </div>
+            </div>
+            <div class="space-4"></div>
+
+            <div class="form-group">
+                <label for="form-field-4" class="col-sm-3 control-label no-padding-right">{% trans '分类图片' %}</label>
+                <div class="col-sm-9">
+                    {{ form.image }}
+                    <span id="error_image" style="color:red"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="form-field-4" class="col-sm-3 control-label no-padding-right">{% trans '简介' %}</label>
+                <div class="col-sm-9">
+                    {{ form.description }}
+                    <div class="space-2"></div>
+                </div>
+            </div>
+
+
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-3 col-md-9">
+                    <button type="submit" class="btn btn-info">
+                        <i class="icon-ok bigger-110"></i>
+                        {% trans '提交' %}
+                    </button>
+
+                    &nbsp; &nbsp; &nbsp;
+                    <button type="reset" class="btn">
+                        <i class="icon-undo bigger-110"></i>
+                        {% trans '重置' %}
+                    </button>
+                </div>
+            </div>
+
+            <div class="hr hr-24"></div>
+
+        </form>
+    </div>
+{% endblock %}
+

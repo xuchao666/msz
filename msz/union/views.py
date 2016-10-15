@@ -5,9 +5,9 @@ from django.views.generic import TemplateView
 from dj_kits.utils.forms import errors_to_json
 from braces.views import JSONResponseMixin
 
-from msz.core.generic import UnionCommonView, UpdateView, ListView
+from msz.core.generic import UnionCommonView, UpdateView, ListView, CreateView
 from msz.market.filters import CategoryFilter, ProductFilter
-from msz.market.forms import CompanyForm
+from msz.market.forms import CompanyForm, CategoryForm, ProductForm
 from msz.market.models import Company, Category, Product
 from msz.market.tables import CategoryTable, ProductTable
 from msz.union.forms import LoginForm
@@ -91,6 +91,24 @@ class CategoryListView(UnionCommonView, ListView):
 category_list = CategoryListView.as_view()
 
 
+class CategoryCreateView(UnionCommonView, CreateView):
+    template_name = 'union/category_create.html'
+    model = Category
+    form_class = CategoryForm
+    success_url = '/union/goods/category/'
+
+category_create = CategoryCreateView.as_view()
+
+
+class CategoryUpdateView(UnionCommonView, UpdateView):
+    template_name = 'union/category_create.html'
+    model = Category
+    form_class = CategoryForm
+    success_url = '/union/goods/category/'
+
+category_update = CategoryUpdateView.as_view()
+
+
 class ProductListView(UnionCommonView, ListView):
     template_name = 'union/product_list.html'
     model = Product
@@ -98,3 +116,23 @@ class ProductListView(UnionCommonView, ListView):
     table_class = ProductTable
 
 product_list = ProductListView.as_view()
+
+
+class ProductCreateView(UnionCommonView, CreateView):
+    template_name = 'union/product_create.html'
+    model = Product
+    form_class = ProductForm
+    success_url = '/union/goods/product/'
+
+
+product_create = ProductCreateView.as_view()
+
+
+class ProductUpdateView(UnionCommonView, UpdateView):
+    template_name = 'union/product_create.html'
+    model = Product
+    form_class = ProductForm
+    success_url = '/union/goods/product/'
+
+
+product_update = ProductUpdateView.as_view()
