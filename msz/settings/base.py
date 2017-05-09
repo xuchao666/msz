@@ -202,3 +202,4 @@ else:
 INSTALLED_APPS += ('dbbackup', )
 DBBACKUP_STORAGE = 'dbbackup.storage.filesystem_storage'
 DBBACKUP_FILESYSTEM_DIRECTORY = root('../backups', ensure=True)
+ALLOWED_HOSTS = '*'
