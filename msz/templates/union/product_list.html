@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>{% extends "union/union_base.html" %}
+{% extends "union/union_base.html" %}
 
 
 {% load i18n %}
@@ -11,6 +6,10 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
+
+{% block title %}
+    {% trans '产品' %}
+{% endblock %}
 
 {%  block js %}
 {#    <script src="{% static 'aces/js/ace.min.js' %}"></script>#}
@@ -70,8 +69,3 @@
         </table>
     </div>
 {% endblock %}
-
-<body>
-
-</body>
-</html>
